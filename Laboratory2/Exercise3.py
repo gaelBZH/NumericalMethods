@@ -35,7 +35,7 @@ def print_comparison(f1, f2, namef1, namef2, n=5):
     
     plot.show()
 
-def print_function(f, name, n=5, color="green"):
+def print_function(f, name, n=5, color="green", limited=False):
     x = np.linspace(-np.pi, np.pi, 100)
 
     plot.figure(figsize=(10, 6))
@@ -47,6 +47,8 @@ def print_function(f, name, n=5, color="green"):
     plot.ylabel('Amplitude')
     plot.grid(True, which='both')
     plot.axhline(y=0, color='k')
+    if limited:
+        plot.ylim(0.5, 1.5)
     
     plot.show()
 
@@ -60,8 +62,8 @@ def diff_cos(x, n):
     return np.cos(x) - taylor_cos(x, n)
 
 def formula(x, n):
-    # sin²(x) + cos²(x) - 1
-    return taylor_sin(x, n)**2 + taylor_cos(x, n)**2 - 1
+    # sin²(x) + cos²(x)
+    return taylor_sin(x, n)**2 + taylor_cos(x, n)**2
 
 
 
@@ -70,4 +72,4 @@ print_comparison(np.sin, taylor_sin, "sin", "Taylor sin", n=2)
 print_comparison(np.cos, taylor_cos, "cos", "Taylor cos", n=2)
 print_function(diff_sin, "difference of sine and taylor approx", n=5)
 print_function(diff_cos, "difference of cos and taylor approx", n=5)
-print_function(formula, "sin²(x) + cos²(x) - 1", n=5)
+print_function(formula, "sin²(x) + cos²(x)", n=2, limited=True)
