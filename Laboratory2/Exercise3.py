@@ -63,6 +63,8 @@ def formula(x, n):
     # sin²(x) + cos²(x) - 1
     return taylor_sin(x, n)**2 + taylor_cos(x, n)**2 - 1
 
+
+
 # Main Programm
 print_comparison(np.sin, taylor_sin, "sin", "Taylor sin", n=2)
 print_comparison(np.cos, taylor_cos, "cos", "Taylor cos", n=2)
