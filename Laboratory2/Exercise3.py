@@ -5,14 +5,14 @@ import math
 # Taylor Approximations Functions
 def taylor_sin(x, n):
     res = 0
-    for n in range(n):
-        res += ((-1)**n * x**(2*n + 1)) / math.factorial(2*n + 1)
+    for i in range(n):
+        res += ((-1)**i * x**(2*i + 1)) / math.factorial(2*i + 1)
     return res
 
 def taylor_cos(x, n):
     res = 0
-    for n in range(n):
-        res += ((-1)**n * x**(2*n)) / math.factorial(2*n)
+    for i in range(n):
+        res += ((-1)**i * x**(2*i)) / math.factorial(2*i)
     return res
 
 
@@ -47,7 +47,10 @@ def print_function(f, name, n=5, color="green", limited=False):
     plot.ylabel('Amplitude')
     plot.grid(True, which='both')
     plot.axhline(y=0, color='k')
+
     if limited:
+        plot.ylim(-0.01, 0.01)
+    else:
         plot.ylim(0.5, 1.5)
     
     plot.show()
@@ -56,10 +59,10 @@ def print_function(f, name, n=5, color="green", limited=False):
 
 # Difference Functions
 def diff_sin(x, n):
-    return np.sin(x) - taylor_sin(x, n)
+    return taylor_sin(x, n) - np.sin(x)
 
 def diff_cos(x, n):
-    return np.cos(x) - taylor_cos(x, n)
+    return taylor_cos(x, n) - np.cos(x)
 
 def formula(x, n):
     # sin²(x) + cos²(x)
@@ -70,6 +73,6 @@ def formula(x, n):
 # Main Programm
 print_comparison(np.sin, taylor_sin, "sin", "Taylor sin", n=2)
 print_comparison(np.cos, taylor_cos, "cos", "Taylor cos", n=2)
-print_function(diff_sin, "difference of sine and taylor approx", n=5)
-print_function(diff_cos, "difference of cos and taylor approx", n=5)
-print_function(formula, "sin²(x) + cos²(x)", n=2, limited=True)
+print_function(diff_sin, "difference of sine and taylor approx", n=2, limited=True)
+print_function(diff_cos, "difference of cos and taylor approx" , n=2, limited=True)
+print_function(formula, "sin²(x) + cos²(x)", n=2)
