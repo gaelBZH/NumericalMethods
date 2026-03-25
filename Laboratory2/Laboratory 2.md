@@ -8,17 +8,20 @@
 - e is 2 bits (0, 1, 2 or 3), so $e-1 \in \{-1, 0, 1, 2\}$
 
 By calculating, we have $2 \times 4 \times 4 = 32$ possible real numbers represented in this system.
+That said, the value 0 occurrs twice. So,, there are 31 distinct values possible. 
 
 #### b. Calculating Maximum Number.
 The maximum number is positive ($k=0$), mantissa is $m=0.11_2 = 0.75_{10}$ and $e = 11_2 = 3_{10}$, so we have :
 $$
 rd(x)_{maximum} = (-1)^0 \times 0.75 \times 2^{(3-1)} = 3.0
 $$
+The same way, the minimum number is **-3.0**.
 #### c. Calculating smallest positive number
 The smallest positive number is, of course, positive ($k=0$), mantissa is $m = 0.01_2 = 0.25_{10}$ and $e=0$, so we have :
 $$
 rd(x)_{minimum} = (-1)^0 \times 0.25 \times 2^{(0-1)} = 0.125
 $$
+The same way, the biggest negative number is **-0.125**.
 
 
 ## Exercise 2
